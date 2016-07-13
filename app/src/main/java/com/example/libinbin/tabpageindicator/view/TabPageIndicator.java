@@ -43,8 +43,6 @@ public class TabPageIndicator extends HorizontalScrollView implements ViewPager.
     private int mLineColor=Color.RED;
     private int mLineHeight=4;
 
-    private int mShowNum=5;
-    private boolean isFirst=true;
 
     /**
      * Horizontal LinearLayout;
@@ -98,6 +96,9 @@ public class TabPageIndicator extends HorizontalScrollView implements ViewPager.
 
     }
 
+    /**
+     * 新建Tab加入线性布局里面
+     */
     private void notifyDataSetChange() {
         mLinearLayout.removeAllViews();
         PagerAdapter adapter = mPager.getAdapter();
@@ -189,11 +190,9 @@ public class TabPageIndicator extends HorizontalScrollView implements ViewPager.
         int measuredWidth = this.getMeasuredWidth();
         View tabView = mLinearLayout.getChildAt(mCurrentPosition);
         int width = tabView.getWidth();
-        int width1 = getWidth();
         float offset = width * mOffset;
         int left = tabView.getLeft();
-        int scrollWitch= (int) (left-measuredWidth/2 + offset- width /4+mTabPaddingLeft);
-        //smoothScrollBy(scrollWitch,0);
+        int scrollWitch= (int) (left-measuredWidth/2 + offset);
         smoothScrollTo(scrollWitch,0);
 
 
